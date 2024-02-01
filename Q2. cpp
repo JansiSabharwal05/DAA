@@ -3,53 +3,53 @@
 int binarySearch(const int arr[], int low, int high, int key, int &comparisons) {
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        comparisons++; // Increment the comparison count for each iteration
+        comparisons++; 
 
         if (arr[mid] == key) {
-            return mid; // Return the index if the key is found
+            return mid; 
         } else if (arr[mid] < key) {
-            low = mid + 1; // Discard the left half
+            low = mid + 1; 
         } else {
-            high = mid - 1; // Discard the right half
+            high = mid - 1; 
         }
     }
 
-    return -1; // Return -1 if the key is not found
+    return -1;
 }
 
 int main() {
     int n;
 
-    // Get the size of the array from the user
-    std::cout << "Enter the size of the sorted array: ";
-    std::cin >> n;
+    
+    cout << "Enter the size of the sorted array: ";
+    cin >> n;
 
     int arr[n];
 
-    // Get sorted array elements from the user
-    std::cout << "Enter the sorted elements of the array:" << std::endl;
+    
+    cout << "Enter the sorted elements of the array:" << endl;
     for (int i = 0; i < n; ++i) {
-        std::cout << "Enter element " << i + 1 << ": ";
-        std::cin >> arr[i];
+        cout << "Enter element " << i + 1 << ": ";
+        cin >> arr[i];
     }
 
     int key;
 
-    // Get the key from the user
-    std::cout << "Enter the key to search: ";
-    std::cin >> key;
+    
+    cout << "Enter the key to search: ";
+    cin >> key;
 
     int comparisons = 0;
 
     int result = binarySearch(arr, 0, n - 1, key, comparisons);
 
     if (result != -1) {
-        std::cout << "Element found at index " << result << std::endl;
+        cout << "Element found at index " << result << endl;
     } else {
-        std::cout << "Element not found" << std::endl;
+        cout << "Element not found" << endl;
     }
 
-    std::cout << "Total comparisons: " << comparisons << std::endl;
+    cout << "Total comparisons: " << comparisons << endl;
 
     return 0;
 }
