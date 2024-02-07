@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+pair<string, int> binarySearch(int arr[], int n, int key) {
+    int left = 0, right = n - 1;
+    bool found = false;
+    int count = 0;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key) {
+            found = true;
+          
+            count = 1;
+          
+            int i = mid - 1;
+            while (i >= 0 && arr[i] == key) {
+                count++;
+                i--;
+            }
+           
+            int j = mid + 1;
+            while (j < n && arr[j] == key) {
+                count++;
+                j++;
+            }
+            break;
+        } else if (arr[mid] < key) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    if (!found) {
+        return make_pair("Key not present", 0);
+    } else {
+        return make_pair(to_string(key), count);
+    }
+}
+
+int main() {
+    int T;
+    cin >> T;
+    
+    while (T--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        int key;
+        cin >> key;
+         pair<string, int> result = binarySearch(arr, n, key);
+        cout << result.first << " " << result.second << endl;
+    }
+    return 0;
+}
