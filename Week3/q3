@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+string findDuplicates(vector<int>& arr) {
+    sort(arr.begin(), arr.end());
+    for (int i = 1; i < arr.size(); ++i) {
+        if (arr[i] == arr[i - 1]) {
+            return "YES";
+        }
+    }
+    return "NO";
+}
+
+int main() {
+    int T;
+    cout << "Enter the number of test cases: ";
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cout << "Enter the size of array: ";
+        cin >> n;
+
+        vector<int> arr(n);
+        cout << "Enter space-separated integers describing the array: ";
+        for (int i = 0; i < n; ++i) {
+            cin >> arr[i];
+        }
+
+        string result = findDuplicates(arr);
+        cout << result << endl;
+    }
+
+    return 0;
+}
